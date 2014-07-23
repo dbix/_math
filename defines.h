@@ -7,13 +7,14 @@
 //
 
 #include "gnudefs.h"
+#include "math.h"
 
 /**********************************************************************
  * Constants                                                          *
  **********************************************************************/
 
-#ifndef __MATH_CONST__   /* Mathematical constants */
-#define __MATH_CONST__
+//#ifndef __MATH_CONST__   /* Mathematical constants */
+//#define __MATH_CONST__
 
 #ifndef M_E
 #define M_E        2.71828182845904523536028747135      /* e */
@@ -127,102 +128,94 @@
 #define M_EULER    0.57721566490153286060651209008      /* Euler constant */
 #endif
 
-#endif             /* __MATH_CONST__ */
-
-#ifndef __TYPES__
-#define __TYPES__
-
-typedef short short_t;
-typedef int int_t;
-typedef long long long_t;
-
-typedef short int16_t;
-typedef int int32_t;
-typedef long long int64_t;
-
-typedef float float32_t;
-typedef long double float64_t;
-
-typedef unsigned short uint16_t;
-typedef unsigned int uint32_t;
-typedef unsigned long long uint64_t;
-
-#endif      /* __TYPES__ */
-
-
-
-#ifndef __PROC_CONST__      /* Processor info */
-#define __PROC_CONST__
-#ifndef DBL_EPSILON
-#define DBL_EPSILON         2.2204460492503131e-16
+#ifndef NAN
+#define NAN		   0x7fc00000UL							/* NAN */
 #endif
-#define SQRT_DBL_EPSILON    1.4901161193847656e-08
-#define ROOT3_DBL_EPSILON   6.0554544523933429e-06
-#define ROOT4_DBL_EPSILON   1.2207031250000000e-04
-#define ROOT5_DBL_EPSILON   7.4009597974140505e-04
-#define ROOT6_DBL_EPSILON   2.4607833005759251e-03
-#define LOG_DBL_EPSILON   (-3.6043653389117154e+01)
 
-#ifndef DBL_MIN
-#define DBL_MIN             2.2250738585072014e-308
+#ifndef INFINITY
+#define INFINITY   0x7f800000UL							/* INFINITY */
 #endif
-#define SQRT_DBL_MIN        1.4916681462400413e-154
-#define ROOT3_DBL_MIN       2.8126442852362986e-103
-#define ROOT4_DBL_MIN       1.2213386697554620e-77
-#define ROOT5_DBL_MIN       2.9476022969691771e-62
-#define ROOT6_DBL_MIN       5.3034368905798233e-52
-#define LOG_DBL_MIN       (-7.0839641853226408e+02)
 
-#ifndef DBL_MAX
-#define DBL_MAX             1.7976931348623157e+308
+#ifndef INF
+#define INF		   DBL_MAX								/* INF */
 #endif
-#define SQRT_DBL_MAX        1.3407807929942596e+154
-#define ROOT3_DBL_MAX       5.6438030941222877e+102
-#define ROOT4_DBL_MAX       1.1579208923731620e+77
-#define ROOT5_DBL_MAX       4.4765466227572707e+61
-#define ROOT6_DBL_MAX       2.3756689782295612e+51
-#define LOG_DBL_MAX         7.0978271289338397e+02
 
-#ifndef FLT_EPSILON
-#define FLT_EPSILON         1.1920928955078125e-07
-#endif
-#define SQRT_FLT_EPSILON    3.4526698300124393e-04
-#define ROOT3_FLT_EPSILON   4.9215666011518501e-03
-#define ROOT4_FLT_EPSILON   1.8581361171917516e-02
-#define ROOT5_FLT_EPSILON   4.1234622211652937e-02
-#define ROOT6_FLT_EPSILON   7.0153878019335827e-02
-#define LOG_FLT_EPSILON   (-1.5942385152878742e+01)
 
-#ifndef FLT_MIN
-#define FLT_MIN             1.1754943508222875e-38
-#endif
-#define SQRT_FLT_MIN        1.0842021724855044e-19
-#define ROOT3_FLT_MIN       2.2737367544323241e-13
-#define ROOT4_FLT_MIN       3.2927225399135965e-10
-#define ROOT5_FLT_MIN       2.5944428542140822e-08
-#define ROOT6_FLT_MIN       4.7683715820312542e-07
-#define LOG_FLT_MIN       (-8.7336544750553102e+01)
+//#endif             /* __MATH_CONST__ */
 
-#ifndef FLT_MAX
-#define FLT_MAX             3.4028234663852886e+38
-#endif
-#define SQRT_FLT_MAX        1.8446743523953730e+19
-#define ROOT3_FLT_MAX       6.9814635196223242e+12
-#define ROOT4_FLT_MAX       4.2949672319999986e+09
-#define ROOT5_FLT_MAX       5.0859007855960041e+07
-#define ROOT6_FLT_MAX       2.6422459233807749e+06
-#define LOG_FLT_MAX         8.8722839052068352e+01
-
-#ifndef SFLT_EPSILON
-#define SFLT_EPSILON        4.8828125000000000e-04
-#endif
-#define SQRT_SFLT_EPSILON   2.2097086912079612e-02
-#define ROOT3_SFLT_EPSILON  7.8745065618429588e-02
-#define ROOT4_SFLT_EPSILON  1.4865088937534013e-01
-#define ROOT5_SFLT_EPSILON  2.1763764082403100e-01
-#define ROOT6_SFLT_EPSILON  2.8061551207734325e-01
-#define LOG_SFLT_EPSILON  (-7.6246189861593985e+00)
-#endif                      /* __PROC_CONST__ */
+//
+//#ifndef __PROC_CONST__      /* Processor info */
+//#define __PROC_CONST__
+//#ifndef DBL_EPSILON
+//#define DBL_EPSILON         2.2204460492503131e-16
+//#endif
+//#define SQRT_DBL_EPSILON    1.4901161193847656e-08
+//#define ROOT3_DBL_EPSILON   6.0554544523933429e-06
+//#define ROOT4_DBL_EPSILON   1.2207031250000000e-04
+//#define ROOT5_DBL_EPSILON   7.4009597974140505e-04
+//#define ROOT6_DBL_EPSILON   2.4607833005759251e-03
+//#define LOG_DBL_EPSILON   (-3.6043653389117154e+01)
+//
+//#ifndef DBL_MIN
+//#define DBL_MIN             2.2250738585072014e-308
+//#endif
+//#define SQRT_DBL_MIN        1.4916681462400413e-154
+//#define ROOT3_DBL_MIN       2.8126442852362986e-103
+//#define ROOT4_DBL_MIN       1.2213386697554620e-77
+//#define ROOT5_DBL_MIN       2.9476022969691771e-62
+//#define ROOT6_DBL_MIN       5.3034368905798233e-52
+//#define LOG_DBL_MIN       (-7.0839641853226408e+02)
+//
+//#ifndef DBL_MAX
+//#define DBL_MAX             1.7976931348623157e+308
+//#endif
+//#define SQRT_DBL_MAX        1.3407807929942596e+154
+//#define ROOT3_DBL_MAX       5.6438030941222877e+102
+//#define ROOT4_DBL_MAX       1.1579208923731620e+77
+//#define ROOT5_DBL_MAX       4.4765466227572707e+61
+//#define ROOT6_DBL_MAX       2.3756689782295612e+51
+//#define LOG_DBL_MAX         7.0978271289338397e+02
+//
+//#ifndef FLT_EPSILON
+//#define FLT_EPSILON         1.1920928955078125e-07
+//#endif
+//#define SQRT_FLT_EPSILON    3.4526698300124393e-04
+//#define ROOT3_FLT_EPSILON   4.9215666011518501e-03
+//#define ROOT4_FLT_EPSILON   1.8581361171917516e-02
+//#define ROOT5_FLT_EPSILON   4.1234622211652937e-02
+//#define ROOT6_FLT_EPSILON   7.0153878019335827e-02
+//#define LOG_FLT_EPSILON   (-1.5942385152878742e+01)
+//
+//#ifndef FLT_MIN
+//#define FLT_MIN             1.1754943508222875e-38
+//#endif
+//#define SQRT_FLT_MIN        1.0842021724855044e-19
+//#define ROOT3_FLT_MIN       2.2737367544323241e-13
+//#define ROOT4_FLT_MIN       3.2927225399135965e-10
+//#define ROOT5_FLT_MIN       2.5944428542140822e-08
+//#define ROOT6_FLT_MIN       4.7683715820312542e-07
+//#define LOG_FLT_MIN       (-8.7336544750553102e+01)
+//
+//#ifndef FLT_MAX
+//#define FLT_MAX             3.4028234663852886e+38
+//#endif
+//#define SQRT_FLT_MAX        1.8446743523953730e+19
+//#define ROOT3_FLT_MAX       6.9814635196223242e+12
+//#define ROOT4_FLT_MAX       4.2949672319999986e+09
+//#define ROOT5_FLT_MAX       5.0859007855960041e+07
+//#define ROOT6_FLT_MAX       2.6422459233807749e+06
+//#define LOG_FLT_MAX         8.8722839052068352e+01
+//
+//#ifndef SFLT_EPSILON
+//#define SFLT_EPSILON        4.8828125000000000e-04
+//#endif
+//#define SQRT_SFLT_EPSILON   2.2097086912079612e-02
+//#define ROOT3_SFLT_EPSILON  7.8745065618429588e-02
+//#define ROOT4_SFLT_EPSILON  1.4865088937534013e-01
+//#define ROOT5_SFLT_EPSILON  2.1763764082403100e-01
+//#define ROOT6_SFLT_EPSILON  2.8061551207734325e-01
+//#define LOG_SFLT_EPSILON  (-7.6246189861593985e+00)
+//#endif                      /* __PROC_CONST__ */
 
 /**********************************************************************
  * Macros                                                             *

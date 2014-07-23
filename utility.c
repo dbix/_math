@@ -7,8 +7,6 @@
 //
 
 #include "numerics.h"
-#include <inttypes.h>
-#include <float.h>
 
 /* Degrees, minutes, seconds to radians: */
 double radian(double d, double m, double s) {

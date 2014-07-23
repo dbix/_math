@@ -9,7 +9,7 @@ double __gamma__(double z) {
     return exp(__lngamma__(z));
 }
 
-double __lngamma__(double z) {
+static double lngamma__(double z) {
     /* Natural log of gamma function */
     int j;
     double x, tmp, y, ser;

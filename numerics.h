@@ -6,11 +6,12 @@
 //  Copyright (c) 2014 Derek Bixler. All rights reserved.
 //
 
-#include <math.h>
-#include <stdbool.h>
-
 #include "defines.h"
-#include "gauleg18.h"
+#include <float.h>
+#include <inttypes.h>
+#include <stdbool.h>
+#include <math.h>
+
 
 /* Utility functions */
 int signbiti(int i);

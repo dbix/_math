@@ -38,3 +38,29 @@ float __sin__(float z) {
             + zcoef[21] - zcoef[23];
     }
 }
+
+float __cos__(float z) {
+    /* Calculate sin z using a Maclauren series:
+     sin z = 1 - z^2/2! + z^4/4! - z^6/6! + ... */
+    if (z == 0.0) {
+        return 1.0;
+    } else if (z == M_PI) {
+        return -1.0;
+    } else if (z == M_PI_3) {
+        return 0.5;
+    } else if (z == M_2PI_3) {
+        return -0.5;
+    } else if (z == M_PI_2) {
+        return 0;
+    } else {
+        int i;
+        double zcoef[24];
+        zcoef[0] = 1;
+        for (i=2; i<=23; i=i+2) {
+            zcoef[i] = pow(z,i)/fact[i];
+        }
+        return zcoef[0] - zcoef[2] + zcoef[4] - zcoef[6] + zcoef[8]
+            - zcoef[10] + zcoef[12] - zcoef[14] + zcoef[16] - zcoef[18]
+            + zcoef[20] - zcoef[22];
+    }
+}

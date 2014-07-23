@@ -77,7 +77,8 @@
 )
 
 #define SWAP(a, b) do                                                       \
-{                                                                           \            a ^= b;                                                                 \
+{                                                                           \
+	a ^= b;                                                                 \
     b ^= a;                                                                 \
     a ^= b;                                                                 \
 } while(0)
@@ -94,7 +95,7 @@
 )
 
 
-/* Non-functioning */
+/* Non-functioning or untested */
 #ifdef __CPLUSPLUS
 #define PRINT(x)                                                            \
 (                                                                           \
