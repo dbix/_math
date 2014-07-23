@@ -7,8 +7,8 @@
 //
 
 #include <stdio.h>
-#include "Python.h"
 #include "_math.h"
+
 
 static const double pi = 3.141592653589793238462643383279502884197;
 static const double sqrtpi = 1.772453850905516027298167483341145182798;
@@ -71,7 +71,8 @@ static const double lanczos_num_coeffs[LANCZOS_N] = {
 /* denominator is x*(x+1)*...*(x+LANCZOS_N-2) */
 static const double lanczos_den_coeffs[LANCZOS_N] = {
     0.0, 39916800.0, 120543840.0, 150917976.0, 105258076.0, 45995730.0,
-    13339535.0, 2637558.0, 357423.0, 32670.0, 1925.0, 66.0, 1.0};
+    13339535.0, 2637558.0, 357423.0, 32670.0, 1925.0, 66.0, 1.0
+};
 
 /* gamma values for small positive integers, 1 though NGAMMA_INTEGRAL */
 #define NGAMMA_INTEGRAL 23
@@ -114,8 +115,7 @@ lanczos_sum(double x)
     return num/den;
 }
 
-static double
-m_tgamma(double x)
+static double m_tgamma(double x)
 {
     double absx, r, y, z, sqrtpow;
     
@@ -276,8 +276,7 @@ m_lgamma(double x)
  Converges reasonably fast for small x.
  */
 
-static double
-m_erf_series(double x)
+static double m_erf_series(double x)
 {
     double x2, acc, fk, result;
     int i, saved_errno;
@@ -291,7 +290,6 @@ m_erf_series(double x)
     }
     /* Make sure the exp call doesn't affect errno;
      see m_erfc_contfrac for more. */
-    saved_errno = errno;
     result = acc * x * exp(-x2) / sqrtpi;
     errno = saved_errno;
     return result;
@@ -330,9 +328,7 @@ m_erfc_contfrac(double x)
     }
     /* Issue #8986: On some platforms, exp sets errno on underflow to zero;
      save the current errno value so that we can restore it later. */
-    saved_errno = errno;
     result = p / q * x * exp(-x2) / sqrtpi;
-    errno = saved_errno;
     return result;
 }
 

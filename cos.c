@@ -21,7 +21,7 @@ static long double fact[TABLE_LENGTH] = {
     25852016738884976640000.0, 15511210043330985984000000.0
 };
 
-float __cos(float z) {
+float __cos__(float z) {
     /* Calculate sin z using a Maclauren series:
      sin z = 1 - z^2/2! + z^4/4! - z^6/6! + ... */
     if (z == 0.0) {

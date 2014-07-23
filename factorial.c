@@ -6,7 +6,9 @@
 //  Copyright (c) 2014 Derek Bixler. All rights reserved.
 //
 
-static const unsigned long long fact_table[] = {
+#include "numerics.h"
+
+const double fact_table[] = {
     1,
     1,
     2,
@@ -180,13 +182,23 @@ static const unsigned long long fact_table[] = {
     7.2574156153079990350004095523891e+306
 };
 
-static unsigned long long factorial(int n) {
+uint64_t __factorial__(int n) {
+    /* Calculate n! from table */
     if (n <= 170)
         return fact_table[n];
     else
         return 1.0/0.0;
 }
 
-double lnfactorial(int n) {
+double __lnfactorial__(int n) {
+    /* Natural logarithm of n! */
     return log(fact_table[n]);
+}
+
+double __binom_coeff__(int k, int n) {
+    /* Binomial coefficient function, a.k.a. "n choose k" */
+    if (n < 0 || k < 0 || k < n)
+        return NAN;
+    else
+        return __factorial__(n) / (__factorial__(k) * __factorial__(n - k));
 }

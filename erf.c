@@ -1,5 +1,5 @@
 #include <math.h>
-#include "drerror.h"
+#include "numerics.h"
 
 /* Constants */
 #define NCOF 28
@@ -18,28 +18,28 @@ static const double cof[28] = {
    -2.8e-17
 };
 
-/* Standard error function */
-static inline double erf(double x) {
-    if x >= 0) 
-        return 1.0 - erfccheb(x);
+inline double __erf__(double x) {
+    /* Standard error function */
+    if (x >= 0)
+        return 1.0 - __erfccheb__(x);
     else
-        return erfccheb(-x) - 1.0;
+        return __erfccheb__(-x) - 1.0;
 }
 
-/* Complimentary error function */
-static inline double erfc(double x) {
+inline double __erfc__(double x) {
+    /* Complimentary error function */
     if (x >= 0.) 
-        return erfccheb(x); 
+        return __erfccheb__(x);
     else 
-        return 2.0 - erfccheb(-x);
+        return 2.0 - __erfccheb__(-x);
 }
 
-/* Complimentary error function using Chebyshev coefficients */
-static double erfccheb(double z) {
+double __erfccheb__(double z) {
+    /* Complimentary error function using Chebyshev coefficients */
     int j;
     double t, ty, tmp, d = 0.0, dd = 0.0;
     if (z < 0.) 
-        drerror("erfccheb requires nonnegative argument"); 
+        return NAN;
     t = 2./(2.+z);
     ty = 4.*t - 2.;
     for (j = NCOF-1; j>0; j--) {
@@ -48,26 +48,4 @@ static double erfccheb(double z) {
         dd = tmp;
     }
     return t*exp(-z*z + 0.5*(cof[0] + ty*d) - dd);
-}
-
-/* Inverse error function */
-static double inverf(double p) {
-    return inverfc(1.0-p);
-}
-
-/* Inverse complimentary error function */
-static double inverfc(double p) {
-    Doub x,err,t,pp;
-    if (p >= 2.0) 
-        return -100.;
-    if (p <= 0.0) 
-        return 100.;
-    pp = (p < 1.0)? p : 2. - p;
-    t = sqrt(-2.*log(pp/2.));
-    x = -0.70711*((2.30753+t*0.27061)/(1.+t*(0.99229+t*0.04481)) - t); 
-    for (Int j=0;j<2;j++) {
-        err = erfc(x) - pp;
-        x += err/(1.12837916709551257*exp(-SQR(x))-x*err);
-    }
-    return (p < 1.0? x : -x);
 }

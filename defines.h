@@ -6,124 +6,149 @@
 //  Copyright (c) 2014 Derek Bixler. All rights reserved.
 //
 
+#include "gnudefs.h"
+
 /**********************************************************************
  * Constants                                                          *
  **********************************************************************/
 
 #ifndef __MATH_CONST__   /* Mathematical constants */
 #define __MATH_CONST__
-    #ifndef M_E
-    #define M_E        2.71828182845904523536028747135      /* e */
-    #endif
 
-    #ifndef M_LOG2E
-    #define M_LOG2E    1.44269504088896340735992468100      /* log_2 (e) */
-    #endif
+#ifndef M_E
+#define M_E        2.71828182845904523536028747135      /* e */
+#endif
 
-    #ifndef M_LOG10E
-    #define M_LOG10E   0.43429448190325182765112891892      /* log_10 (e) */
-    #endif
+#ifndef M_LOG2E
+#define M_LOG2E    1.44269504088896340735992468100      /* log_2 (e) */
+#endif
 
-    #ifndef M_SQRT2
-    #define M_SQRT2    1.41421356237309504880168872421      /* sqrt(2) */
-    #endif
+#ifndef M_LOG10E
+#define M_LOG10E   0.43429448190325182765112891892      /* log_10 (e) */
+#endif
 
-    #ifndef M_SQRT1_2
-    #define M_SQRT1_2  0.70710678118654752440084436210      /* sqrt(1/2) */
-    #endif
+#ifndef M_SQRT2
+#define M_SQRT2    1.41421356237309504880168872421      /* sqrt(2) */
+#endif
 
-    #ifndef M_SQRT3
-    #define M_SQRT3    1.73205080756887729352744634151      /* sqrt(3) */
-    #endif
+#ifndef M_SQRT1_2
+#define M_SQRT1_2  0.70710678118654752440084436210      /* sqrt(1/2) */
+#endif
 
-    #ifndef M_PI
-    #define M_PI       3.14159265358979323846264338328      /* pi */
-    #endif
+#ifndef M_SQRT3
+#define M_SQRT3    1.73205080756887729352744634151      /* sqrt(3) */
+#endif
 
-    #ifndef M_11PI_12
-    #define M_11PI_12  2.87979326579064380192408976800      /* 11pi/12 */
-    #endif
+#ifndef M_PI
+#define M_PI       3.14159265358979323846264338328      /* pi */
+#endif
 
-    #ifndef M_5PI_6
-    #define M_5PI_6    2.61799387799149436538553615273      /* 5pi/6 */
-    #endif
+#ifndef M_11PI_12
+#define M_11PI_12  2.87979326579064380192408976800      /* 11pi/12 */
+#endif
 
-    #ifndef M_3PI_4
-    #define M_3PI_4    2.35619449019234492884698253745      /* 3pi/4 */
-    #endif
+#ifndef M_5PI_6
+#define M_5PI_6    2.61799387799149436538553615273      /* 5pi/6 */
+#endif
 
-    #ifndef M_2PI_3
-    #define M_2PI_3    2.09439510239319549230842892218      /* 2pi/3 */
-    #endif
+#ifndef M_3PI_4
+#define M_3PI_4    2.35619449019234492884698253745      /* 3pi/4 */
+#endif
 
-    #ifndef M_7PI_12
-    #define M_7PI_12   1.83259571459404605576987530691      /* 7pi/12 */
-    #endif
+#ifndef M_2PI_3
+#define M_2PI_3    2.09439510239319549230842892218      /* 2pi/3 */
+#endif
 
-    #ifndef M_PI_2
-    #define M_PI_2     1.57079632679489661923132169163      /* pi/2 */
-    #endif
+#ifndef M_7PI_12
+#define M_7PI_12   1.83259571459404605576987530691      /* 7pi/12 */
+#endif
 
-    #ifndef M_5PI_12
-    #define M_5PI_12   1.30899693899574718269276807636      /* 5pi/12 */
-    #endif
+#ifndef M_PI_2
+#define M_PI_2     1.57079632679489661923132169163      /* pi/2 */
+#endif
 
-    #ifndef M_PI_3
-    #define M_PI_3     1.04719755119659774615421446109      /* pi/3 */
-    #endif
+#ifndef M_5PI_12
+#define M_5PI_12   1.30899693899574718269276807636      /* 5pi/12 */
+#endif
 
-    #ifndef M_PI_4
-    #define M_PI_4     0.78539816339744830961566084581      /* pi/4 */
-    #endif
+#ifndef M_PI_3
+#define M_PI_3     1.04719755119659774615421446109      /* pi/3 */
+#endif
 
-    #ifndef M_PI_6
-    #define M_PI_6     0.52359877559829887307710723054      /* pi/6 */
-    #endif
+#ifndef M_PI_4
+#define M_PI_4     0.78539816339744830961566084581      /* pi/4 */
+#endif
 
-    #ifndef M_PI_12
-    #define M_PI_12    0.26179938779914943653855361527      /* pi/12 */
-    #endif
+#ifndef M_PI_6
+#define M_PI_6     0.52359877559829887307710723054      /* pi/6 */
+#endif
 
-    #ifndef M_SQRTPI
-    #define M_SQRTPI   1.77245385090551602729816748334      /* sqrt(pi) */
-    #endif
+#ifndef M_PI_12
+#define M_PI_12    0.26179938779914943653855361527      /* pi/12 */
+#endif
 
-    #ifndef M_2_SQRTPI
-    #define M_2_SQRTPI 1.12837916709551257389615890312      /* 2/sqrt(pi) */
-    #endif
+#ifndef M_SQRTPI
+#define M_SQRTPI   1.77245385090551602729816748334      /* sqrt(pi) */
+#endif
 
-    #ifndef M_SQRT3_2
-    #define M_SQRT3_2  0.86602540378443864676372317075      /* sqrt(3)/2 */
-    #endif
+#ifndef M_2_SQRTPI
+#define M_2_SQRTPI 1.12837916709551257389615890312      /* 2/sqrt(pi) */
+#endif
 
-    #ifndef M_SQRT2_2
-    #define M_SQRT2_2  0.70710678118654752440084436210      /* sqrt(2)/2 */
-    #endif
+#ifndef M_SQRT3_2
+#define M_SQRT3_2  0.86602540378443864676372317075      /* sqrt(3)/2 */
+#endif
 
-    #ifndef M_1_PI
-    #define M_1_PI     0.31830988618379067153776752675      /* 1/pi */
-    #endif
+#ifndef M_SQRT2_2
+#define M_SQRT2_2  0.70710678118654752440084436210      /* sqrt(2)/2 */
+#endif
 
-    #ifndef M_2_PI
-    #define M_2_PI     0.63661977236758134307553505349      /* 2/pi */
-    #endif
+#ifndef M_1_PI
+#define M_1_PI     0.31830988618379067153776752675      /* 1/pi */
+#endif
 
-    #ifndef M_LN10
-    #define M_LN10     2.30258509299404568401799145468      /* ln(10) */
-    #endif
+#ifndef M_2_PI
+#define M_2_PI     0.63661977236758134307553505349      /* 2/pi */
+#endif
 
-    #ifndef M_LN2
-    #define M_LN2      0.69314718055994530941723212146      /* ln(2) */
-    #endif
+#ifndef M_LN10
+#define M_LN10     2.30258509299404568401799145468      /* ln(10) */
+#endif
 
-    #ifndef M_LNPI
-    #define M_LNPI     1.14472988584940017414342735135      /* ln(pi) */
-    #endif
+#ifndef M_LN2
+#define M_LN2      0.69314718055994530941723212146      /* ln(2) */
+#endif
 
-    #ifndef M_EULER
-    #define M_EULER    0.57721566490153286060651209008      /* Euler constant */
-    #endif
+#ifndef M_LNPI
+#define M_LNPI     1.14472988584940017414342735135      /* ln(pi) */
+#endif
+
+#ifndef M_EULER
+#define M_EULER    0.57721566490153286060651209008      /* Euler constant */
+#endif
+
 #endif             /* __MATH_CONST__ */
+
+#ifndef __TYPES__
+#define __TYPES__
+
+typedef short short_t;
+typedef int int_t;
+typedef long long long_t;
+
+typedef short int16_t;
+typedef int int32_t;
+typedef long long int64_t;
+
+typedef float float32_t;
+typedef long double float64_t;
+
+typedef unsigned short uint16_t;
+typedef unsigned int uint32_t;
+typedef unsigned long long uint64_t;
+
+#endif      /* __TYPES__ */
+
 
 
 #ifndef __PROC_CONST__      /* Processor info */
@@ -202,36 +227,10 @@
 /**********************************************************************
  * Macros                                                             *
  **********************************************************************/
-#ifdef signbit
-#undef signbit
-#endif
 
-
-#define signbit(x) do {\
-\
-} while() 
-/* Utility functions */
-int signbiti(int i);
-int signbitl(long l);
-int signbitf(float f);
-int signbitd(double d);
-int signbitld(long double ld);
-unsigned long bit_length(unsigned long n);
-unsigned long count_set_bits(unsigned long n);
+#define MIN(x,y) ((x)<(y)?(x):(y))
+#define MAX(x,y) ((x)>(y)?(x):(y))
 
 /**********************************************************************
  * Etc.                                                               *
  **********************************************************************/
-/* Define double_t */
-#if __FLT_EVAL_METHOD__ == 0
-typedef float float_t;
-typedef double double_t;
-#elif __FLT_EVAL_METHOD__ == 1
-typedef double float_t;
-typedef double double_t;
-#elif __FLT_EVAL_METHOD__ == 2 || __FLT_EVAL_METHOD__ == -1
-typedef long double float_t;
-typedef long double double_t;
-#else
-#   error "Unsupported value of __FLT_EVAL_METHOD__."
-#endif

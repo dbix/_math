@@ -10,53 +10,76 @@
 #include <stdbool.h>
 
 #include "defines.h"
-#include "numtypes.h"
+#include "gauleg18.h"
+
+/* Utility functions */
+int signbiti(int i);
+int signbitf(float f);
+int signbitd(double d);
+int signbitld(long double ld);
+double radian(double d, double m, double s);
+unsigned long bit_length(unsigned long n);
+unsigned long count_set_bits(unsigned long n);
 
 /* Exponential, logarithmic, and power functions */
-double pow(double a, double b);
-double exp(double x);
-double ln(double x);
-double log(double x);
+double __pow__(double a, double b);
+double __exp__(double x);
+double __ln__(double x);
+double __log__(double x);
+
+/* Factorial */
+uint64_t __factorial__(int n);
+double __lnfactorial__(int n);
+double __binom_coeff__(int k, int n);
 
 /* Trigonometric functions */
-float __sin(float z);
-float __cos(float z);
-double __sin__(double z);
-double __cos__(double z);
-double tan(double z);
-double sec(double z);
-double csc(double z);
-double cot(double z);
+float __sin__(float z);
+float __cos__(float z);
+double __tan__(double z);
+double __sec__(double z);
+double __csc__(double z);
+double __cot__(double z);
 
-double_t arcsin(double_t z);
-double_t arccos(double_t z);
-double_t arctan(double_t z);
-double_t arcsec(double_t z);
-double_t arccsc(double_t z);
-double_t arccot(double_t z);
+double __arcsin__(double z);
+double __arccos__(double z);
+double __arctan__(double z);
+double __arcsec__(double z);
+double __arccsc__(double z);
+double __arccot__(double z);
 
 /* Hyperbolic functions */
-double_t sinh(double_t z);
-double_t cosh(double_t z);
-double_t tanh(double_t z);
-double_t sech(double_t z);
-double_t csch(double_t z);
-double_t coth(double_t z);
+double __sinh__(double z);
+double __cosh__(double z);
+double __tanh__(double z);
+double __sech__(double z);
+double __csch__(double z);
+double __coth__(double z);
 
-double_t arcsinh(double_t z);
-double_t arccosh(double_t z);
-double_t arctanh(double_t z);
-double_t arcsech(double_t z);
-double_t arccsch(double_t z);
-double_t arccoth(double_t z);
+double __arcsinh__(double z);
+double __arccosh__(double z);
+double __arctanh__(double z);
+double __arcsech__(double z);
+double __arccsch__(double z);
+double __arccoth__(double z);
 
 /* Special functions */
-double gamma(double z);
-double lngamma(double z);
-double qgamma(double z);
-double pgamma(double z);
-double invgamma(double z);
-double beta(double z);
-double lnbeta(double z);
+
+/* Gamma */
+double __gamma__(double z);
+double __lngamma__(double z);
+double __qgamma__(double z);
+double __pgamma__(double z);
+double __invgamma__(double z);
+
+/* Beta */
+double __beta__(double z);
+double __lnbeta__(double z);
+
+/* Error function */
+inline double __erf__(double x);
+inline double __erfc__(double x);
+inline double __inverf__(double p);
+double __erfccheb__(double z);
+double __inverfc__(double p);
 
 /* Statistics functions */

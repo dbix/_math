@@ -52,7 +52,7 @@ unsigned long count_set_bits(unsigned long n) {
 int signbiti(int i) {
     union {
         int i;
-        u_int32_t ui;
+        uint32_t ui;
     } u;
     u.i = i;
     return u.ui >> 31;
@@ -61,7 +61,7 @@ int signbiti(int i) {
 int signbitf(float f) {
     union {
         float f;
-        u_int32_t i;
+        uint32_t i;
     } u;
     u.f = f;
     return u.i >> 31;
@@ -70,7 +70,7 @@ int signbitf(float f) {
 int signbitd(double d) {
     union {
         double d;
-        u_int64_t i;
+        uint64_t i;
     } u;
     u.d = d;
     return u.i >> 63;

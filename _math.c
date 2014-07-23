@@ -1,7 +1,7 @@
 /* Definitions of some C99 math library functions, for those platforms
    that don't implement these functions already. */
 
-#include "Python.h"
+
 #include <float.h>
 #include "_math.h"
 
@@ -41,7 +41,7 @@ static const double zero = 0.0;
 double
 _Py_acosh(double x)
 {
-    if (Py_IS_NAN(x)) {
+    if (isnan(x)) {
         return x+x;
     }
     if (x < 1.) {                       /* x < 1;  return a signaling NaN */

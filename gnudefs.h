@@ -23,13 +23,10 @@
 #ifndef	_MATH_H
 #define	_MATH_H	1
 
-#include <features.h>
-
 __BEGIN_DECLS
 
 /* Get machine-dependent HUGE_VAL value (returned on overflow).
    On all IEEE754 machines, this is +Infinity.  */
-#include <bits/huge_val.h>
 #ifdef __USE_ISOC99
 # include <bits/huge_valf.h>
 # include <bits/huge_vall.h>
@@ -40,9 +37,6 @@ __BEGIN_DECLS
 /* Get machine-dependent NAN value (returned for some domain errors).  */
 # include <bits/nan.h>
 #endif /* __USE_ISOC99 */
-
-/* Get general and ISO C99 specific information.  */
-#include <bits/mathdef.h>
 
 /* The file <bits/mathcalls.h> contains the prototypes for all the
    actual math functions.  These macros are used for those prototypes,
@@ -66,7 +60,6 @@ __BEGIN_DECLS
 #define __MATH_PRECNAME(name,r)	__CONCAT(name,r)
 #define _Mdouble_BEGIN_NAMESPACE __BEGIN_NAMESPACE_STD
 #define _Mdouble_END_NAMESPACE   __END_NAMESPACE_STD
-#include <bits/mathcalls.h>
 #undef	_Mdouble_
 #undef _Mdouble_BEGIN_NAMESPACE
 #undef _Mdouble_END_NAMESPACE
@@ -303,7 +296,8 @@ enum
 # define __NO_MATH_INLINES	1
 #endif
 
-#if defined __USE_ISOC99 && __GNUC_PREREQ(2,97)
+#ifdef __USE_ISOC99
+#ifdef __GNUC_PREREQ(2,97)
 /* ISO C99 defines some macros to compare number while taking care for
    unordered numbers.  Many FPUs provide special instructions to support
    these operations.  Generic support in GCC for these as builtins went
@@ -316,6 +310,7 @@ enum
 # define islessequal(x, y)      __builtin_islessequal(x, y)
 # define islessgreater(x, y)	__builtin_islessgreater(x, y)
 # define isunordered(u, v)      __builtin_isunordered(u, v)
+#endif
 #endif
 
 #ifdef __USE_ISOC99
