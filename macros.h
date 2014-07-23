@@ -94,6 +94,56 @@
     sizeof(a) / sizeof(*a)                                                  \
 )
 
+/* ISO comparison macros */
+# ifndef isgreater
+#  define isgreater(x, y) (__extension__({									\
+	__typeof__(x) __x = (x);												\
+	__typeof__(y) __y = (y);			      								\
+	!isunordered (__x, __y) && __x > __y; 									\
+}))
+# endif
+
+# ifndef isgreaterequal
+#  define isgreaterequal(x, y) (__extension__({								\
+	__typeof__(x) __x = (x);												\
+	__typeof__(y) __y = (y);			      								\
+    !isunordered (__x, __y) && __x >= __y; 									\
+}))
+# endif
+
+#ifndef isless
+#define isless(x, y) (__extension__({ 										\
+	__typeof__(x) __x = (x); 												\
+	__typeof__(y) __y = (y);			      								\
+    !isunordered (__x, __y) && __x < __y; 									\
+}))
+#endif
+
+# ifndef islessequal
+#  define islessequal(x, y) (__extension__({ 								\
+	__typeof__(x) __x = (x); 												\
+	__typeof__(y) __y = (y);			      								\
+	!isunordered (__x, __y) && __x <= __y;									\
+}))
+# endif
+
+# ifndef islessgreater
+#  define islessgreater(x, y) ( __extension__({								\													\
+		__typeof__(x) __x = (x); 											\
+		__typeof__(y) __y = (y);							   				\
+      !isunordered (__x, __y) && (__x < __y || __y < __x);					\
+}))
+# endif
+
+/* Return nonzero value if arguments are unordered.  */
+#ifndef isunordered
+#define isunordered(u, v) (__extension__({									\
+	__typeof__(u) __u = (u);												\
+	__typeof__(v) __v = (v);			      								\
+    fpclassify (__u) == FP_NAN || fpclassify (__v) == FP_NAN; 				\
+}))
+# endif
+
 
 /* Non-functioning or untested */
 #ifdef __CPLUSPLUS
